@@ -92,7 +92,7 @@ class UserController extends Controller
      */
     public function reniec($id)
     {
-        $url=env('RENIEC').$id;
+        $url=env('RENIEC').'?cdni='.$id.'&key='.env('kEY_RENIEC');
         $retorno = file_get_contents($url);
         return $retorno;
     }
