@@ -36,14 +36,15 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{reportes.citas}}</h3>
 
                                 <p>Registro de citas</p>
                             </div>
                             <div class="icon">
                                 <i class="fa-solid fa-truck-medical"></i>
                             </div>
-                            <router-link :to="'/citas'" class="small-box-footer">Registrar citas <i class="fas fa-arrow-circle-right"></i></router-link>
+                            <router-link :to="'/citas'" class="small-box-footer">Registrar citas <i
+                                    class="fas fa-arrow-circle-right"></i></router-link>
                         </div>
                     </div>
 
@@ -51,42 +52,45 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{ reportes.pacientes }}</h3>
 
                                 <p>Registro de pacientes</p>
                             </div>
                             <div class="icon">
                                 <i class="fa-solid fa-bed-pulse"></i>
                             </div>
-                            <router-link :to="'/pacientes'" class="small-box-footer">Registrar pacientes <i class="fas fa-arrow-circle-right"></i></router-link>
+                            <router-link :to="'/pacientes'" class="small-box-footer">Registrar pacientes <i
+                                    class="fas fa-arrow-circle-right"></i></router-link>
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{ reportes.tratamientos }}</h3>
 
                                 <p>Registro de tratamientos</p>
                             </div>
                             <div class="icon">
                                 <i class="fa-solid fa-suitcase-medical"></i>
                             </div>
-                            <router-link :to="'/tratamientos'" class="small-box-footer">Registrar tratamientos <i class="fas fa-arrow-circle-right"></i></router-link>
+                            <router-link :to="'/tratamientos'" class="small-box-footer">Registrar tratamientos <i
+                                    class="fas fa-arrow-circle-right"></i></router-link>
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box bg-primary">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{ reportes.dentistas }}</h3>
 
                                 <p>Registro de dentistas</p>
                             </div>
                             <div class="icon">
                                 <i class="fa-solid fa-user-doctor"></i>
                             </div>
-                            <router-link :to="'/cirujano'" class="small-box-footer">Registrar dentistas <i class="fas fa-arrow-circle-right"></i></router-link>
+                            <router-link :to="'/cirujano'" class="small-box-footer">Registrar dentistas <i
+                                    class="fas fa-arrow-circle-right"></i></router-link>
                         </div>
                     </div>
                 </div>
@@ -100,20 +104,38 @@
 
 <script>
 export default {
-    name: 'ClinicaIndex',
+    name: 'Dashboard',
 
     data() {
         return {
-
+            reportes: {
+                citas: 0,
+                pacientes: 0,
+                tratamientos: 0,
+                dentistas: 0,
+            }
         };
     },
 
     mounted() {
-
+        this.datosreportes();
     },
 
     methods: {
+        datosreportes() {
+            // 1. Usar const para la URL
+            const url = '/reportes';
 
+            axios.get(url)
+                .then(response => {
+                    // 2. Asegúrate de que response.data tenga la misma estructura que tu objeto reportes
+                    this.reportes = response.data;
+                })
+                .catch(error => {
+                    // 3. Siempre manejar errores para depuración
+                    console.error("Hubo un error al obtener los reportes:", error);
+                });
+        },
     },
 };
 </script>

@@ -50,6 +50,9 @@ Route::post('/tratamiento-nuevo', [TratamientoController::class, 'nuevotratamien
 
 Route::post('/addhistorial', [HistorialController::class, 'addhistorial'])->name('addhistorial');
 
+// Home Route
+Route::get('/reportes', [App\Http\Controllers\HomeController::class, 'reportes'])->name('reportes');
+
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

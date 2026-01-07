@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Citas;
+use App\Models\Tratamiento;
+use App\Models\Historial;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -28,5 +32,21 @@ class HomeController extends Controller
     public function inicio()
     {
         return view('welcome');
+    }
+    public function reportes()
+    {
+
+        $pacientes = User::role('Paciente')->get();
+        $dentitas = User::role('Cirujano')->get();
+        $citas = Citas::all();
+        $tratamientos = Tratamiento::all();
+
+        return response()->json([
+            'pacientes' => $pacientes->count(),
+            'dentistas' => $dentitas->count(),
+            'citas' => $citas->count(),
+            'tratamientos' => $tratamientos->count(),
+        ]);
+
     }
 }

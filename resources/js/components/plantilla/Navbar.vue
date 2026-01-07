@@ -8,9 +8,9 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <router-link :to="'/'" class="nav-link">Inicio</router-link>
+                <router-link :to="'/home'" class="nav-link">Inicio</router-link>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
+            <!-- <li class="nav-item d-none d-sm-inline-block">
                 <router-link :to="'/'" class="nav-link">Buscar Documento</router-link>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
@@ -18,7 +18,7 @@
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <router-link :to="'/'" class="nav-link">Archivadores</router-link>
-            </li>
+            </li> -->
             
         </ul>
 
