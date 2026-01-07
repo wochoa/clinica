@@ -25,6 +25,7 @@ export default {
 
             calendarOptions: {
                 plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
+                locale: 'es',
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
