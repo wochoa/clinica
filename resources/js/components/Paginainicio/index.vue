@@ -38,7 +38,8 @@
                     <div class="col-lg-6 mb-4">
                         <el-card :body-style="{ padding: '0px' }" shadow="always"
                             class="border-0 rounded-lg overflow-hidden">
-                            <img :src="urlini + '/odonto/image-6.jpg'" class="img-fluid w-100 hover-effect" alt="Clínica">
+                            <img :src="urlini + '/odonto/image-6.jpg'" class="img-fluid w-100 hover-effect"
+                                alt="Clínica">
                         </el-card>
                     </div>
 
@@ -68,6 +69,78 @@
                                     Responsable</small>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container py-5">
+                <div class="text-center mb-5">
+                    <h2 class="font-weight-bold">Mejorando tu salud bucal con amor...!</h2>
+                    <p class="text-muted">Tratamientos especializados para cada etapa de la vida</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" v-for="tag in categorias" :key="tag.label">
+                        <div class="card border-0 shadow-sm text-center">
+                            <img :src="urlini + tag.img" class="card-img-top rounded-lg"
+                                style="height: 150px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="font-weight-bold text-primary">{{ tag.label }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3 class="font-weight-bold mb-4">Nuestros Servicios</h3>
+                            <ul class="list-unstyled">
+                                <li v-for="item in listaServicios" :key="item" class="mb-2">
+                                    <i class="fas fa-check-circle text-success mr-2"></i> {{ item }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <el-alert title="Prótesis Fijas y Coronas" type="info" :closable="false"
+                                        show-icon></el-alert>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <el-alert title="Blanqueamiento Dental" type="success" :closable="false"
+                                        show-icon></el-alert>
+                                </div>
+                            </div>
+                            <div class="card mt-2 shadow-sm border-primary">
+                                <div class="card-body">
+                                    <h5 class="text-primary font-weight-bold"><i class="fas fa-info-circle"></i> ¿Te
+                                        faltan dientes?</h5>
+                                    <p>Nosotros los solucionamos con prótesis en general (Removibles, Porcelana,
+                                        Zirconio).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container py-5">
+                <div class="row text-center">
+                    <div class="col-md-6 border-right">
+                        <h5 class="font-weight-bold">Facilidades de Pago</h5>
+                        <div class="d-flex justify-content-center mt-3">
+                            <span class="badge badge-outline-secondary mx-1 p-2">Efectivo</span>
+                            <span class="badge badge-outline-secondary mx-1 p-2">Yape / Plin</span>
+                            <span class="badge badge-outline-secondary mx-1 p-2">Transferencias</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="font-weight-bold">Ubícanos en:</h5>
+                        <p class="mb-0">Jr. Independencia 1540 - Segundo Piso</p>
+                        <p class="text-muted small">(A 1 cuadra de Real Plaza - Huánuco)</p>
+                        <a href="tel:934697645" class="btn btn-success btn-sm rounded-pill mt-2">
+                            <i class="fas fa-phone"></i> 934 697 645
+                        </a>
                     </div>
                 </div>
             </div>
@@ -103,6 +176,17 @@ export default {
                 frase: 'Refleja tu mejor versión: Diseñamos la sonrisa que siempre deseaste.',
                 posicion: 'left' // Texto a la izquierda
             }
+            ],
+            categorias: [
+                { label: 'Niños(as)', img: '/odonto/ninos.jpg' },
+                { label: 'Jóvenes', img: '/odonto/jovenes.jpg' },
+                { label: 'Adultos', img: '/odonto/adultos.jpg' },
+                { label: 'Adultos Mayores', img: '/odonto/mayores.jpg' }
+            ],
+            listaServicios: [
+                'Rayos X', 'Endodoncia', 'Ortodoncia', 'Extracciones simples y complejas',
+                'Curaciones con resinas', 'Limpieza con ultrasonido', 'Fluorización y sellantes',
+                'Odontología estética (Carillas)'
             ]
         };
     },
@@ -119,61 +203,63 @@ export default {
 
 <style lang="scss" scoped>
 .slide-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 .carousel-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .carousel-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  transition: all 0.6s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: all 0.6s ease-in-out;
 }
 
 /* Oscurece el lado IZQUIERDO cuando el texto está ahí */
 .overlay-left {
-  background: linear-gradient(to right, 
-    rgba(0, 0, 0, 0.85) 0%, 
-    rgba(0, 0, 0, 0.4) 40%, 
-    rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.4) 40%,
+            rgba(0, 0, 0, 0) 100%);
 }
 
 /* Oscurece el lado DERECHO cuando el texto está ahí */
 .overlay-right {
-  background: linear-gradient(to left, 
-    rgba(0, 0, 0, 0.85) 0%, 
-    rgba(0, 0, 0, 0.4) 40%, 
-    rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to left,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.4) 40%,
+            rgba(0, 0, 0, 0) 100%);
 }
 
 .carousel-content {
-  color: white;
-  // Sombra suave adicional para asegurar lectura
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  
-  h1 {
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
+    color: white;
+    // Sombra suave adicional para asegurar lectura
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+
+    h1 {
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
 }
 
 /* Responsive: En móviles centramos todo y oscurecemos parejo */
 @media (max-width: 768px) {
-  .carousel-overlay {
-    background: rgba(0, 0, 0, 0.6) !important;
-  }
-  .text-right, .text-left {
-    text-align: center !important;
-  }
+    .carousel-overlay {
+        background: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .text-right,
+    .text-left {
+        text-align: center !important;
+    }
 }
 </style>
