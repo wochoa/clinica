@@ -69,7 +69,7 @@ export default {
 <style lang="scss" scoped>
 // Fuente moderna (asegúrate de incluirla en tu layout principal)
 .custom-nav {
-    background: linear-gradient(90deg, #0bb9b7 0%, #037ad6 100%) !important;
+    background: linear-gradient(90deg, #158381 0%, #118987 100%) !important;
     border: none !important;
     padding: 0.8rem 0;
     transition: all 0.3s ease;
